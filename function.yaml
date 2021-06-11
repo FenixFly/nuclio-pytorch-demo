@@ -1,0 +1,14 @@
+apiVersion: "nuclio.io/v1beta1"
+kind: "NuclioPyTorchHelloWorld"
+spec:
+  description: >
+    Trying to use pytorch with nuclio
+  runtime: "python:3.7"
+  handler: pytorch:do
+  minReplicas: 1
+  maxReplicas: 1
+  build:
+    baseImage: python:3.7
+    commands:
+    - "apt-get update && apt-get install -y wget"
+    - "pip install requests numpy torch torchvision"
